@@ -18,12 +18,12 @@ export class UsersService {
     return await this.userRepository.save(user) ;
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    return await this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: number) {
+    return await this.userRepository.findOne({where:{id}});
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
