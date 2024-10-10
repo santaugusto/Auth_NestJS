@@ -25,6 +25,11 @@ export class UsersService {
   async findOne(id: number) {
     return await this.userRepository.findOne({where:{id}});
   }
+  
+  async findUserByEmail(email: string) {
+    return await this.userRepository.findOne({ where: { email } });
+  }
+  
 
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
@@ -33,4 +38,5 @@ export class UsersService {
   remove(id: number) {
     return `This action removes a #${id} user`;
   }
+
 }

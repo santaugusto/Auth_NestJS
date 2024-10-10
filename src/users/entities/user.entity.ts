@@ -21,6 +21,6 @@ export class User {
     @BeforeInsert()
     async setPassaword(){
         const salt = await bcrypt.genSalt();
-        this.senha = await bcrypt.hash(this.senha,salt)
-    }
+        this.senha = await bcrypt.hash(this.senha,salt);
+    };
 }
