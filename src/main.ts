@@ -3,6 +3,7 @@ import { AppModule } from './app.module';
 import * as session from 'express-session';
 import * as passport from 'passport';
 import { ConfigService } from '@nestjs/config'; // Corrigido: Importando ConfigService corretamente
+import flash = require('connect-flash')
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,6 +16,7 @@ async function bootstrap() {
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
   await app.listen(3001);
 }
