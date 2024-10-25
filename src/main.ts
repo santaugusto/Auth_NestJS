@@ -12,12 +12,11 @@ async function bootstrap() {
     secret: configService.get<string>('SESSION_SECRET'),
     resave: false,
     saveUninitialized: false,
-  }));
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-  app.use(passport.initialize());
-  app.use(passport.session());
-
-  await app.listen(3000);
+  await app.listen(3001);
 }
 
 bootstrap();

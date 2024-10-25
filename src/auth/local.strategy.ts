@@ -6,14 +6,17 @@ import {Strategy} from 'passport-local';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy){
     constructor(private authService: AuthService){
-        super()
-    };
+        super({
+            usernameField: 'email',
+            passwordField: 'senha',
+          });
+    }
 
-    async validador(username:string, senha:string){
-        const user = await this.authService.validadorUser(username,senha);
-        if(!user){
-            throw new UnauthorizedException();
-        };
+    async validate(username: string, senha: string){
+        const user = await this.authService.validadorUser(username, senha);
+        if (!user) {
+            throw new UnauthorizedException(); // Retorna 401 se o usuário não for válido
+        }
         return user;
     }
 }
