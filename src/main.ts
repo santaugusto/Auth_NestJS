@@ -4,6 +4,7 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 import { ConfigService } from '@nestjs/config'; // Corrigido: Importando ConfigService corretamente
 import flash = require('connect-flash')
+import { AuthExceptionFilter } from './common/filters/auth-exception.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,10 +14,11 @@ async function bootstrap() {
     secret: configService.get<string>('SESSION_SECRET'),
     resave: false,
     saveUninitialized: false,
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+  }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
+  app.useGlobalFilters(new AuthExceptionFilter());
 
   await app.listen(3001);
 }
