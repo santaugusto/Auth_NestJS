@@ -7,6 +7,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthExceptionFilter } from './common/filters/auth-exception.filter';
+import { PasswordResetModule } from './password-reset/password-reset.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AuthExceptionFilter } from './common/filters/auth-exception.filter';
     }),
     UsersModule,
     AuthModule,
+    PasswordResetModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthExceptionFilter],
