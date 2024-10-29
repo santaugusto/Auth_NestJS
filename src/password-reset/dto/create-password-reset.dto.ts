@@ -1,1 +1,6 @@
-export class CreatePasswordResetDto {}
+export class CreatePasswordResetDto {
+
+    email:string;
+    token:string;
+    
+}

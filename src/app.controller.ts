@@ -21,6 +21,10 @@ export class AppController {
       class: req.flash('class')
     }
   }
+  @Get('password-reset')
+  passwordReset(){
+    
+  }
 
   @Post('login')
   @UseGuards(LoginGuard)

@@ -5,11 +5,12 @@ import { UpdatePasswordResetDto } from './dto/update-password-reset.dto';
 
 @Controller('password-reset')
 export class PasswordResetController {
-  constructor(private readonly passwordResetService: PasswordResetService) {}
+  constructor(private readonly passwordResetService: PasswordResetService,
+  ) {}
 
   @Post()
-  create(@Body() createPasswordResetDto: CreatePasswordResetDto) {
-    return this.passwordResetService.create(createPasswordResetDto);
+  createP(@Body() createPasswordResetDto: CreatePasswordResetDto) {
+    return this.passwordResetService.createPasswordReset(createPasswordResetDto);
   }
 
   @Get()
